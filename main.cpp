@@ -384,7 +384,82 @@ void drawBookshelf(Shader& shader) {
     vase = glm::scale(vase, glm::vec3(0.25, 0.4, 0.25));
     drawCube(shader, vase, glm::vec3(0.7f, 0.5f, 0.3f));
 }
+// Window
+void drawWindow(Shader& shader) {
+    // Window frame
+    glm::mat4 windowFrame = glm::translate(glm::mat4(1.0f), glm::vec3(5.95, 2.8, -1.8));
+    windowFrame = glm::scale(windowFrame, glm::vec3(0.12, 2.8, 2.2));
+    drawCube(shader, windowFrame, glm::vec3(0.85f, 0.75f, 0.65f));
 
+    // Window glass
+    glm::mat4 windowGlass = glm::translate(glm::mat4(1.0f), glm::vec3(6.02, 2.8, -1.8));
+    windowGlass = glm::scale(windowGlass, glm::vec3(0.05, 2.6, 2.0));
+    drawCube(shader, windowGlass, glm::vec3(0.5f, 0.7f, 0.95f));
+
+    // Window cross bars
+    glm::mat4 crossBar1 = glm::translate(glm::mat4(1.0f), glm::vec3(5.95, 1.8, -1.8));
+    crossBar1 = glm::scale(crossBar1, glm::vec3(0.14, 0.1, 2.1));
+    drawCube(shader, crossBar1, glm::vec3(0.65f, 0.55f, 0.45f));
+
+    glm::mat4 crossBar2 = glm::translate(glm::mat4(1.0f), glm::vec3(5.95, 3.6, -1.8));
+    crossBar2 = glm::scale(crossBar2, glm::vec3(0.14, 0.1, 2.1));
+    drawCube(shader, crossBar2, glm::vec3(0.65f, 0.55f, 0.45f));
+
+    glm::mat4 crossBar3 = glm::translate(glm::mat4(1.0f), glm::vec3(5.95, 2.8, -0.9));
+    crossBar3 = glm::scale(crossBar3, glm::vec3(0.14, 2.7, 0.12));
+    drawCube(shader, crossBar3, glm::vec3(0.65f, 0.55f, 0.45f));
+
+    glm::mat4 crossBar4 = glm::translate(glm::mat4(1.0f), glm::vec3(5.95, 2.8, -2.7));
+    crossBar4 = glm::scale(crossBar4, glm::vec3(0.14, 2.7, 0.12));
+    drawCube(shader, crossBar4, glm::vec3(0.65f, 0.55f, 0.45f));
+}
+
+// Door
+void drawDoor(Shader& shader) {
+    // Door frame
+    glm::mat4 doorFrame = glm::translate(glm::mat4(1.0f), glm::vec3(-5.95, 1.6, 3.5));
+    doorFrame = glm::scale(doorFrame, glm::vec3(0.15, 3.2, 1.3));
+    drawCube(shader, doorFrame, glm::vec3(0.6f, 0.48f, 0.35f));
+
+    // Door panel
+    glm::mat4 door = glm::translate(glm::mat4(1.0f), glm::vec3(-6.02, 1.6, 3.5));
+    door = glm::scale(door, glm::vec3(0.08, 2.9, 1.2));
+    drawCube(shader, door, glm::vec3(0.45f, 0.35f, 0.22f));
+
+    // Door handle
+    glm::mat4 handle = glm::translate(glm::mat4(1.0f), glm::vec3(-5.95, 1.7, 4.05));
+    handle = glm::scale(handle, glm::vec3(0.08, 0.08, 0.12));
+    drawCube(shader, handle, glm::vec3(0.85f, 0.75f, 0.4f));
+
+    // Door panels
+    glm::mat4 panel1 = glm::translate(glm::mat4(1.0f), glm::vec3(-6.0, 1.1, 3.52));
+    panel1 = glm::scale(panel1, glm::vec3(0.05, 0.8, 0.8));
+    drawCube(shader, panel1, glm::vec3(0.55f, 0.45f, 0.32f));
+
+    glm::mat4 panel2 = glm::translate(glm::mat4(1.0f), glm::vec3(-6.0, 2.2, 3.52));
+    panel2 = glm::scale(panel2, glm::vec3(0.05, 0.8, 0.8));
+    drawCube(shader, panel2, glm::vec3(0.55f, 0.45f, 0.32f));
+}
+
+// Desk lamp
+void addDeskLamp(Shader& shader) {
+    glm::mat4 m = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, -1.5f));
+
+    // Lamp base
+    glm::mat4 base = glm::translate(m, glm::vec3(1.2, 1.56, -0.7));
+    base = glm::scale(base, glm::vec3(0.15, 0.04, 0.15));
+    drawCube(shader, base, glm::vec3(0.2f));
+
+    // Lamp pole
+    glm::mat4 pole = glm::translate(m, glm::vec3(1.2, 1.8, -0.7));
+    pole = glm::scale(pole, glm::vec3(0.04, 0.5, 0.04));
+    drawCube(shader, pole, glm::vec3(0.15f));
+
+    // Lamp shade
+    glm::mat4 shade = glm::translate(m, glm::vec3(1.2, 2.05, -0.7));
+    shade = glm::scale(shade, glm::vec3(0.22, 0.1, 0.22));
+    drawCube(shader, shade, glm::vec3(0.9f, 0.85f, 0.7f));
+}
 
 void processInput(GLFWwindow* window) {
     float speed = 3.5f * deltaTime;
